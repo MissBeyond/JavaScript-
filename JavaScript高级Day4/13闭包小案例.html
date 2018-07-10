@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 没有缓存数据
+        // function f1() {
+        //     var num = 10
+        //     num++
+        //     return num
+        // }
+        // console.log(f1())
+        // console.log(f1())
+        // console.log(f1())
+        
+
+        // 函数的闭包
+        function f1() {
+            var num =10//这一行调用一次，放在2个函数中间，就可以被外层函数调用
+            return function () {
+                num++
+                return num
+            }
+        }
+        var ff = f1()//ff就是上面的匿名函数
+        console.log(ff())//11
+        console.log(ff())//12
+        console.log(ff())//13
+    </script>
+</body>
+</html>

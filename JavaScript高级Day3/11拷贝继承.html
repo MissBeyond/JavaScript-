@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 拷贝继承：把一个对象中的属性或者方法直接复制到另一个对象中
+
+        function Person() {
+            
+        }
+        Person.prototype.age = 10
+        Person.prototype.sex = '男'
+        Person.prototype.height = 100
+        Person.prototype.play = function () {
+            console.log('玩的很开心')
+        }
+        var obj2 = {}
+
+
+        // Person 的构造函数中有prototype，prototype就是一个对象，那么里面的age,sex,height,play都是改对象里的属性或者方法
+
+        // 拷贝继承就是把一个对象当中的属性和方法通过循环遍历的方式方式放到了另一个对象中
+
+        for (var key in Person.prototype) {//遍历
+            obj2[key] = Person.prototype[key]
+        }
+        console.dir(obj2)
+        obj2.play()
+    </script>
+</body>
+</html>

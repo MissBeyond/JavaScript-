@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    // 下面小案例反应三个点：1、字符串和字符串之间可以比较 2、函数作为返回值 3、函数作为参数
+    //排序,每个文件都有名字，大小,时间,都可以按照某个属性的值进行排序
+
+    //三部电影,电影有名字,大小,上映时间
+    function File(name,size,time) {
+        this.name = name//电影名字
+        this.size = size//电影大小
+        this.time = time//电影上映的时间
+    }
+    var f1 = new File("jack.avi", "400M", "1997-12-12");//字符串和字符串之间可以比较
+    var f2 = new File("tom.avi", "200M", "2017-12-12");
+    var f3 = new File("xiaosu.avi", "800M", "2010-12-12");
+
+    var arr = [f1, f2, f3]//将对象放到了数组里，让数组排序
+
+    function fn(attr) {
+        // 别忘了return
+        // 函数作为返回值
+        return function getSort(obj1,obj2) {
+         if (obj1[attr]>obj2[attr]) {
+             return 1
+         } else if (obj1[attr]==obj2[attr]) {
+             return 0
+         }else{
+             return -1
+         }
+     }
+    }
+
+    // 函数作为参数
+    var ff = fn("time")
+    arr.sort(ff)
+
+
+    //下面的代码每次比较的时候修改属性特别麻烦，所以可以变成参数会更方便
+    //  function getSort(obj1,obj2) {
+    //      //obj1,obj2是对象，对象不可以直接比较大小，但是其属性可以比较，所以用obj1.size
+    //      if (obj1.time>obj2.time) {
+    //          return 1
+    //      } else if (obj1.time==obj2.time) {
+    //          return 0
+    //      }else{
+    //          return -1
+    //      }
+    //  }
+    //  数组里面的每一个都是一个对象，看出他的结果，需要循环遍历这个数组
+    // arr.sort(getSort)
+
+
+    //遍历
+    for (let i = 0; i< arr.length; i++) {
+        console.log(arr[i].name + '=======' + arr[i].size + '======' + arr[i].time)
+    }
+    </script>
+</body>
+</html>

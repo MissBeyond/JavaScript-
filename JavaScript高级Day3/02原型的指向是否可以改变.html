@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 构造函数中的this 就是实例对象
+    // 原型对象中方法中的this就是实例对象
+    // function Person(age) {
+    //     this.age = age
+    //     console.log(this)
+    // }
+    // // Person原型里添加方法
+    // Person.prototype.eat = function () {
+    //     console.log(this)
+    //     console.log('去一起嗨')
+    // }
+    // // 实例对象
+    // var per = new Person (10)
+    // per.eat()
+    // console.log(per)
+
+   
+    // function Student() {
+        
+    // }
+    // Student.prototype.study = function () {
+    //     console.log('好好学习')
+    // }
+    // Student.prototype = {
+    //     eat:function () {
+    //         console.log('好吃')
+    //     }
+    // }
+    // var stu = new Student
+    // stu.eat()
+
+    // 人的构造函数
+    function Person(age) {
+      this.age = 10
+    }
+    // 人的原型对象方法
+    Person.prototype.eat= function () {
+      console.log('人的吃')
+    }
+    // 学生的构造函数
+    function Student() {
+      
+    }
+    Student.prototype.sayHi= function () {
+        console.log('你好帅')
+    }
+    // 学生的原型，指向了一个人的实例对象
+    Student.prototype = new Person(10)
+    var stu = new Student()
+    stu.eat()
+    // stu.sayHi()
+
+    // 原型指向可以改变，
+    // 实例对象的原型__proto__指向的是该对象所在的构造函数的原型对象
+    // 实例对象的原型__proto__指向
+
+
+
+
+    </script>
+</body>
+</html>

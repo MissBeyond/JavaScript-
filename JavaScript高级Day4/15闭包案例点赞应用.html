@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            float:left;
+            margin-right: 10px;
+        }
+        img{
+            width: 200px;
+            height: 180px;
+        }
+        input{
+           margin-left: 30%
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <img src="images/bd.jpg" alt=""><br/>
+            <input type="button" value="赞(1)">
+        </li>
+        <li>
+            <img src="images/brs.jpg" alt=""><br/>
+            <input type="button" value="赞(1)">
+        </li>
+        <li>
+            <img src="images/ct.jpg" alt=""><br/>
+            <input type="button" value="赞(1)">
+        </li>
+        <li>
+            <img src="images/fj.jpg" alt=""><br/>
+            <input type="button" value="赞(1)">
+        </li>
+    </ul>
+    <script>
+        // 闭包缓存数据
+        // 获取所有按钮
+        function my$(tagName) {
+            return document.getElementsByTagName(tagName)
+        }
+        function getValue() {
+            var value = 2//初始值应该是2
+            return function () {
+                // 每一次点击的时候，都应该改变当前点击按钮的value值
+                this.value = "赞(" + (value++) + ")"
+            }
+        }
+        // 获取所有按钮
+        var btnObj = my$('input')
+        // 循环遍历每个按钮，注册点击事件
+        for (let i = 0; i < btnObj.length; i++) {
+            btnObj[i].onclick = getValue()//函数的返回值
+            
+        }
+
+
+        // 以下每个按钮都不能独立，所以选择上面的闭包
+    // // 获取所有按钮
+    // // 根据标签名字获取元素,返回来是多个，是个数组
+    // function my$(tagName) {
+    //     return document.getElementsByTagName(tagName)
+    // }
+    // var btnObj = my$("input")
+    // var value = 1 
+    // // 循环遍历每个按钮
+    // for (let i = 0; i < btnObj.length; i++) {
+    //     // 为每个按钮注册点击事件
+    //     btnObj[i].onclick = function () {
+    //         this.value = "赞(" + (value++) + ")"
+    //     }
+        
+    // }
+    </script>
+</body>
+</html>

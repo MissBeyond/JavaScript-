@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 面向对象编程思想：根据需求，分析对象，找到对象有什么特征和行为，通过代码的方式来实现需求，
+    // 要想实现这个需求，就要创建对象，要想创建对象，就应该显示有构造函数，然后通过构造函数来创建对象，
+    // 通过对象调用属性和方法来实现相应的功能及需求即可
+
+    // 首先JS不是一门面向对象的语言，JS 是一门基于对象的语言，那么为什么学习JS还要学习面向对象呢？
+    // 因为面向对象的思想适合于人的想法，编程起来会更加的方便，以及后期的维护
+
+    // 面向对象的编程语言中有类（class）的概念（也是一种特殊的数据类型），但是JS不是面向对象的语言，所以JS中没有类（class），但是JS可以模拟面向对象的思想编程
+    // JS中会通过构造函数来模拟类的概念（class）
+
+    // 特征--->属性
+    // 行为---->方法
+
+    // 面向对象的特性：封装、继承、多态
+
+    // 封装：就是包装
+    // 一个值储存在一个变量中----封装
+    // 一坨重复代码放在一个函数中---封装
+    // 一系列的属性放在一个对象中---封装
+    // 一些功能类似的函数（方法）放在一个对象中---封装
+    // 好多类似的对象放在一个JS 文件中---封装
+
+    // 继承:继承是一种关系，类（class）与类之间的关系，JS中没有类，但是可以通过构造函数模拟，然后通过原型来实现继承
+    // 继承也是为了数据共享，js中的继承也是为了实现数据共享
+
+
+    // 原型作用之一：数据共享，节省空间
+    // 原型作用之二：为了实现继承
+
+    // 继承是一种关系：父类级别与子类级别的关系
+
+    // 多态：一个对象有不同的行为，或者是同一个行为针对不同的对象，产生不同的结果，要想有多态，就要先有继承，
+    //      js 可以模拟多态，但是不会去使用，也不会去模拟（因为导致数据不能共享，储存空间变大）
+
+    // 相同代码太多，造成了代码的冗余（重复代码太多）
+
+    // JS中通过原型实现继承
+
+    // 列子：人，都有姓名，年龄，性别，吃饭，睡觉，玩
+    // 学生：姓名，年龄，性别，吃饭，睡觉，玩，学习
+    function Person(name,age,sex) {
+        this.name = name
+        this.sex = sex
+        this.age = age
+    }
+    Person.prototype.eat = function () {
+        console.log('吃饭')
+    }
+     Person.prototype.sleep = function () {
+        console.log('睡觉')
+    }
+     Person.prototype.play = function () {
+        console.log('玩')
+    }
+
+    function Student(score) {
+        this.score = score
+    }
+    // 改变了学生的原型的指向即可------>学生和人已经发生关系
+    Student.prototype = new Person('小明', 10, '男')
+    Student.prototype.study = function () {
+        console.log('学习很累')
+    }
+    var stu = new Student(100)
+    console.log(stu.name)
+    console.log(stu.age)
+    console.log(stu.sex)
+    stu.eat()
+    stu.sleep()
+    stu.play()
+
+    </script>
+</body>
+</html>

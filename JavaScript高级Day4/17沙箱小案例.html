@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 把自己独立的代码都放到自己的沙箱里，这样就不会互相有冲突
+
+    (function () {
+        var str='小红3456';
+        str=str.substr(1);//substr() 方法可在字符串中抽取从 start 下标开始的指定数目的字符。
+        console.log(str);
+    }());
+     //沙箱
+    (function () {
+      var str="小明喜欢小红";
+      str=str.substr(2);
+      console.log(str);
+    }());
+    </script>
+
+    <input type="button" value="按钮" id="btn">
+    <script>
+        // 沙箱
+    (function () {
+        document.getElementById('btn').onclick = function () {
+            alert('hello')
+        }
+    }())
+    </script>
+</body>
+</html>
